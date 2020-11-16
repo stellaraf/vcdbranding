@@ -50,6 +50,7 @@ def get_auth_headers(url: str) -> Dict[str, str]:
     token = get_token()
     res = httpx.post(
         build_url(url, "api", "sessions"),
+        verify=False,
         headers={
             **DEFAULT_HEADERS,
             "Content-Type": "application/json",
@@ -134,8 +135,9 @@ def update_theme(url: str) -> None:
 
     theme_res = httpx.put(
         build_url(url, "cloudapi", "branding"),
-        headers={**DEFAULT_HEADERS, **auth_headers, "Content-Type": "application/json"},
         json=theme,
+        verify=False,
+        headers={**DEFAULT_HEADERS, **auth_headers, "Content-Type": "application/json"},
     )
 
     if theme_res.status_code != 200:
@@ -148,8 +150,9 @@ def update_theme(url: str) -> None:
 
         logo_res = httpx.put(
             build_url(url, "cloudapi", "branding", "logo"),
-            headers={**DEFAULT_HEADERS, **auth_headers, "Content-Type": content_type},
+            verify=False,
             content=logo_file.read(),
+            headers={**DEFAULT_HEADERS, **auth_headers, "Content-Type": content_type},
         )
 
         if logo_res.status_code != 204:
