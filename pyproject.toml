@@ -1,0 +1,26 @@
+[tool.poetry]
+authors = ["checktheroads <matt@stellar.tech>"]
+description = "Utility module to update VMware vCloud Director branding."
+license = "BSD 3 Clause Clear"
+name = "vcdbranding"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+httpx = "^0.16.1"
+python = "^3.8"
+rich = "^9.2.0"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+flake8 = "^3.8.4"
+flake8-black = "^0.2.1"
+flake8-isort = "^4.0.0"
+isort = "^5.6.4"
+mypy = "^0.790"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.black]
+line-length = 88
